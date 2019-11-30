@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "lyh.security",
+      "type": "com.lyh.security.core.properties.SecurityProperties",
+      "sourceType": "com.lyh.security.core.properties.SecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "lyh.security.browser-properties",
+      "type": "com.lyh.security.core.properties.BrowserProperties",
+      "sourceType": "com.lyh.security.core.properties.SecurityProperties"
+    }
+  ],
+  "hints": []
+}
