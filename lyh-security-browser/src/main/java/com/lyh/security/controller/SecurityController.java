@@ -32,8 +32,11 @@ public class SecurityController {
 
   private Logger logger = LoggerFactory.getLogger(getClass());
 
+  // 请求缓存  （HttpSessionRequestCache 当前的请求缓存的session里面去）
+  // 其中HttpSessionRequestCache为Spring Security提供的用于缓存请求的对象，通过调用它的getRequest方法可以获取到本次请求的HTTP信息
   private RequestCache requestCache = new HttpSessionRequestCache();
 
+  // DefaultRedirectStrategy的sendRedirect为Spring Security提供的用于处理重定向的方法
   private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
   @Autowired
@@ -46,10 +49,12 @@ public class SecurityController {
    * @return
    */
   @RequestMapping("/authentication/require")
-  @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-  public SimpleResponse requireAutentication(HttpServletRequest request, HttpServletResponse response)throws IOException {
+  @ResponseStatus(code = HttpStatus.UNAUTHORIZED)  // 未授权的状态码
+  public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response)throws IOException {
 
+    // 之前缓存的请求
     SavedRequest savedRequest = requestCache.getRequest(request, response);
+
     if(savedRequest != null){
       String targetUrl = savedRequest.getRedirectUrl();
       logger.info("引发跳转的请求是： " + targetUrl);

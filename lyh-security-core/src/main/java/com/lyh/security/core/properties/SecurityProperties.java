@@ -15,11 +15,21 @@ import org.springframework.stereotype.Component;
 public class SecurityProperties {
   private BrowserProperties browserProperties = new BrowserProperties();
 
+  private ValidateCodeProperties codeProperties = new ValidateCodeProperties();
+
   public BrowserProperties getBrowserProperties() {
     return browserProperties;
   }
 
   public void setBrowserProperties(BrowserProperties browserProperties) {
     this.browserProperties = browserProperties;
+  }
+
+  public ValidateCodeProperties getCodeProperties() {
+    return codeProperties;
+  }
+
+  public void setCodeProperties(ValidateCodeProperties codeProperties) {
+    this.codeProperties = codeProperties;
   }
 }

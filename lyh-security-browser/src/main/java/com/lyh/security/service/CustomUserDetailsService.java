@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
  * @date 2019/11/28 21:28
  * 处理用户信息获取逻辑
  */
-@Component
-public class CustomuserDetailsService implements UserDetailsService {
+@Component("customUserDetailsService")
+public class CustomUserDetailsService implements UserDetailsService {
 
 
   private Logger logger = LoggerFactory.getLogger(getClass());
@@ -30,6 +30,7 @@ public class CustomuserDetailsService implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    // 处理用户校验
 
     logger.info("登录用户名： " + username);
     // 根据用户名查找用户信息
