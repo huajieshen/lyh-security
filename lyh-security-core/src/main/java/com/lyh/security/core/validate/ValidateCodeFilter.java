@@ -117,7 +117,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
    */
   private ValidateCodeType getValidateCodeType(HttpServletRequest request) {
     ValidateCodeType result = null;
-    System.out.println(request.getMethod());
+//    System.out.println(request.getMethod());
     if (!StringUtils.equalsIgnoreCase(request.getMethod(), "get")) {
       Set<String> urls = urlMap.keySet();
       for (String url : urls) {

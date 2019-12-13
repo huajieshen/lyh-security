@@ -17,6 +17,8 @@ public class SecurityProperties {
 
   private ValidateCodeProperties codeProperties = new ValidateCodeProperties();
 
+  private SocialProperties social = new SocialProperties();
+
   public BrowserProperties getBrowserProperties() {
     return browserProperties;
   }
@@ -31,5 +33,13 @@ public class SecurityProperties {
 
   public void setCodeProperties(ValidateCodeProperties codeProperties) {
     this.codeProperties = codeProperties;
+  }
+
+  public SocialProperties getSocial() {
+    return social;
+  }
+
+  public void setSocial(SocialProperties social) {
+    this.social = social;
   }
 }

@@ -1,5 +1,6 @@
 package com.lyh.security.core.properties;
 
+import com.lyh.security.core.constant.SecurityConstants;
 import com.lyh.security.core.enums.LoginResponseType;
 
 /**
@@ -9,8 +10,11 @@ import com.lyh.security.core.enums.LoginResponseType;
  */
 public class BrowserProperties {
 
+  private String signUpUrl = "/lyh-signUp.html";
+
   // 默认值
-  private String loginPage = "/login-signIn.html";
+//  private String loginPage = "/login-signIn.html";
+  private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;
 
   private LoginResponseType loginResponseType = LoginResponseType.JSON;
 
@@ -38,5 +42,13 @@ public class BrowserProperties {
 
   public void setRememberMeSeconds(int rememberMeSeconds) {
     this.rememberMeSeconds = rememberMeSeconds;
+  }
+
+  public String getSignUpUrl() {
+    return signUpUrl;
+  }
+
+  public void setSignUpUrl(String signUpUrl) {
+    this.signUpUrl = signUpUrl;
   }
 }

@@ -16,6 +16,11 @@
       "name": "lyh.security.code-properties",
       "type": "com.lyh.security.core.properties.ValidateCodeProperties",
       "sourceType": "com.lyh.security.core.properties.SecurityProperties"
+    },
+    {
+      "name": "lyh.security.social",
+      "type": "com.lyh.security.core.properties.SocialProperties",
+      "sourceType": "com.lyh.security.core.properties.SecurityProperties"
     }
   ],
   "hints": []

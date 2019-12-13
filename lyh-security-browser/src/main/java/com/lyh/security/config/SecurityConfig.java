@@ -5,24 +5,19 @@ import com.lyh.security.core.authentication.mobile.SmsCodeAuthenticationSecurity
 import com.lyh.security.core.constant.SecurityConstants;
 
 import com.lyh.security.core.validate.ValidateCodeSecurityConfig;
-import com.lyh.security.handler.CustomAuthenticationFailureHandler;
-import com.lyh.security.handler.CustomAuthenticationSuccessHandler;
 import com.lyh.security.core.properties.SecurityProperties;
-import com.lyh.security.core.validate.ValidateCodeFilter;
-import com.lyh.security.service.CustomUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.sql.DataSource;
 
@@ -50,6 +45,9 @@ public class SecurityConfig extends AbstractChannelSecurityConfig {
   @Autowired
   private ValidateCodeSecurityConfig validateCodeSecurityConfig;
 
+  @Autowired
+  private SpringSocialConfigurer lyhSocialSecurityConfig;
+
   @Bean
   public PersistentTokenRepository persistentTokenRepository() {
     JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
@@ -75,6 +73,8 @@ public class SecurityConfig extends AbstractChannelSecurityConfig {
             .and()
             .apply(smsCodeAuthenticationSecurityConfig)
             .and()
+            .apply(lyhSocialSecurityConfig)
+            .and()
             .rememberMe()
             .tokenRepository(persistentTokenRepository())
             .tokenValiditySeconds(securityProperties.getBrowserProperties().getRememberMeSeconds())
@@ -89,12 +89,16 @@ public class SecurityConfig extends AbstractChannelSecurityConfig {
                     SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE,  // "/authentication/mobile"
 
                     SecurityConstants.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*",
+                    securityProperties.getBrowserProperties().getSignUpUrl(),
+
+
 
 //                    "/authentication/require",
 //                    securityProperties.getBrowserProperties().getLoginPage(),
-                    "/code/*",
-                    "/error"
-            ).permitAll()
+//                    "/code/*",
+                    "/error",
+                    "/user/regist")
+            .permitAll()
             .anyRequest()
             .authenticated() //
             .and()
