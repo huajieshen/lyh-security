@@ -10,15 +10,23 @@ import com.lyh.security.core.enums.LoginResponseType;
  */
 public class BrowserProperties {
 
+  /**指定默认的注册页面*/
   private String signUpUrl = "/lyh-signUp.html";
 
-  // 默认值
-//  private String loginPage = "/login-signIn.html";
+  /**指定默认的登陆页面*/
   private String loginPage = SecurityConstants.DEFAULT_LOGIN_PAGE_URL;
 
+  /**指定默认的处理成功与处理失败的方法*/
   private LoginResponseType loginResponseType = LoginResponseType.JSON;
 
+  /**记住我的时间3600秒即1小时*/
   private int rememberMeSeconds = 3600;
+
+  /**session相关的配置如session最大并发数量等*/
+  private SessionProperties session = new SessionProperties();
+
+
+
 
   public String getLoginPage() {
     return loginPage;
@@ -50,5 +58,13 @@ public class BrowserProperties {
 
   public void setSignUpUrl(String signUpUrl) {
     this.signUpUrl = signUpUrl;
+  }
+
+  public SessionProperties getSession() {
+    return session;
+  }
+
+  public void setSession(SessionProperties session) {
+    this.session = session;
   }
 }

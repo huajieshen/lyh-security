@@ -5,6 +5,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
+ * 用于统一管理项目中所有由yml或properties文件传入的变量值
  * @author shenhj
  * @version 1.0
  * @date 2019/11/29 14:40
@@ -18,6 +19,7 @@ public class SecurityProperties {
   private ValidateCodeProperties codeProperties = new ValidateCodeProperties();
 
   private SocialProperties social = new SocialProperties();
+
 
   public BrowserProperties getBrowserProperties() {
     return browserProperties;
