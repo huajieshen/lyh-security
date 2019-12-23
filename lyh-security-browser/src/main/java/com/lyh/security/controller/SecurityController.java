@@ -1,9 +1,8 @@
 package com.lyh.security.controller;
 
 import com.lyh.security.core.properties.SecurityProperties;
-import com.lyh.security.support.SimpleResponse;
+import com.lyh.security.core.support.SimpleResponse;
 import com.lyh.security.support.SocialUserInfo;
-import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

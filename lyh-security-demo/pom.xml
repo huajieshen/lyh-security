@@ -12,12 +12,16 @@
     <artifactId>lyh-security-demo</artifactId>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.lyh</groupId>-->
+<!--            <artifactId>lyh-security-browser</artifactId>-->
+<!--            <version>${lyh.security.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.lyh</groupId>
-            <artifactId>lyh-security-browser</artifactId>
+            <artifactId>lyh-security-app</artifactId>
             <version>${lyh.security.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

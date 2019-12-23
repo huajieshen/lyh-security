@@ -57,6 +57,10 @@ public class SecurityConfig extends AbstractChannelSecurityConfig {
   @Autowired
   private SessionInformationExpiredStrategy sessionInformationExpiredStrategy;
 
+
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+
   @Bean
   public PersistentTokenRepository persistentTokenRepository() {
     JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
@@ -65,11 +69,7 @@ public class SecurityConfig extends AbstractChannelSecurityConfig {
     return tokenRepository;
   }
 
-  // 处理密码加密解密
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+
 
 
 
@@ -136,6 +136,6 @@ public class SecurityConfig extends AbstractChannelSecurityConfig {
 
     // 使用密码加密
 //    auth.userDetailsService(customUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-    auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
+    auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder);
   }
 }

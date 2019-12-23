@@ -1,4 +1,4 @@
-package com.lyh.security.handler;
+package com.lyh.security.app.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lyh.security.core.enums.LoginResponseType;
