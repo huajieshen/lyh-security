@@ -1,4 +1,4 @@
-package com.lyh.security;
+package com.lyh.security.browser;
 
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;

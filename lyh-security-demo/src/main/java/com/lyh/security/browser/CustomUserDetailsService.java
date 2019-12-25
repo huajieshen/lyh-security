@@ -1,4 +1,4 @@
-package com.lyh.security;
+package com.lyh.security.browser;
 
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;

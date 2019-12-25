@@ -1,4 +1,4 @@
-package com.lyh.security.session;
+package com.lyh.security.browser.session;
 
 import org.springframework.security.web.session.InvalidSessionStrategy;
 

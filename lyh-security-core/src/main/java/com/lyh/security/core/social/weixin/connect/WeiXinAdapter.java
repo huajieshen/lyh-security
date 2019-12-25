@@ -1,7 +1,7 @@
 package com.lyh.security.core.social.weixin.connect;
 
-import com.lyh.security.core.social.weixin.api.WeiXin;
 import com.lyh.security.core.social.weixin.api.WeiXinUserInfo;
+import com.lyh.security.core.social.weixin.api.WeiXin;
 import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;

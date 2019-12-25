@@ -1,22 +1,10 @@
 package com.lyh.security.app.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 /**
  * @author shenhj
@@ -60,8 +48,9 @@ public class LyhAuthorizationServerConfig extends AuthorizationServerConfigurerA
             .withClient("lyh")//用于标识用户ID
             .authorizedGrantTypes("authorization_code", "refresh_token")//授权方式
             .scopes("all")//授权范围
-            .secret(new BCryptPasswordEncoder().encode("lyhSecret"))
-            .autoApprove(false)
+//            .secret(new BCryptPasswordEncoder().encode("lyhSecret"))
+            .secret("lyhSecret")
+//            .autoApprove(false)
             .redirectUris("http://example.com");
 
 //    clients.withClientDetails(clientDetails());

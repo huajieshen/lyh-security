@@ -1,9 +1,9 @@
-package com.lyh.security.handler;
+package com.lyh.security.browser.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lyh.security.core.enums.LoginResponseType;
 import com.lyh.security.core.properties.SecurityProperties;
 import com.lyh.security.core.support.SimpleResponse;
+import com.lyh.security.core.enums.LoginResponseType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

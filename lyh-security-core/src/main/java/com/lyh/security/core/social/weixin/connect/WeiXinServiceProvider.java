@@ -3,7 +3,6 @@ package com.lyh.security.core.social.weixin.connect;
 import com.lyh.security.core.social.weixin.api.WeiXin;
 import com.lyh.security.core.social.weixin.api.WeiXinImpl;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
-import org.springframework.social.oauth2.OAuth2Operations;
 
 /**
  * @author shenhj

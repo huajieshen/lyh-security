@@ -1,9 +1,9 @@
 package com.lyh.security.core.validate;
 
-import com.lyh.security.core.properties.SecurityProperties;
-import com.lyh.security.core.validate.image.ImageCodeGenerator;
 import com.lyh.security.core.validate.sms.DefaultSmsCodeSender;
 import com.lyh.security.core.validate.sms.SmsCodeSender;
+import com.lyh.security.core.properties.SecurityProperties;
+import com.lyh.security.core.validate.image.ImageCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

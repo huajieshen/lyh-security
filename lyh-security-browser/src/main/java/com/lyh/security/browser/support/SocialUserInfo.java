@@ -1,4 +1,4 @@
-package com.lyh.security.support;
+package com.lyh.security.browser.support;
 
 /**
  * @author shenhj

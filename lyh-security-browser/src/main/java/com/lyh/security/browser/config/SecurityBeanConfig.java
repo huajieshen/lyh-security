@@ -1,8 +1,8 @@
-package com.lyh.security.config;
+package com.lyh.security.browser.config;
 
 import com.lyh.security.core.properties.SecurityProperties;
-import com.lyh.security.session.LyhExpiredSessionStrategy;
-import com.lyh.security.session.LyhInvalidSessionStrategy;
+import com.lyh.security.browser.session.LyhExpiredSessionStrategy;
+import com.lyh.security.browser.session.LyhInvalidSessionStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

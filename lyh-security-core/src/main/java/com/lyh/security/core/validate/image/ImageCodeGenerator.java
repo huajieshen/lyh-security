@@ -2,7 +2,6 @@ package com.lyh.security.core.validate.image;
 
 import com.lyh.security.core.properties.SecurityProperties;
 import com.lyh.security.core.validate.ValidateCodeGenerator;
-import com.lyh.security.core.validate.image.ImageCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;

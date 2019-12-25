@@ -1,4 +1,4 @@
-package com.lyh.security.session;
+package com.lyh.security.browser.session;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;

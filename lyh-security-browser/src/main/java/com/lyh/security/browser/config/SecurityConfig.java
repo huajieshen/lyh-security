@@ -1,20 +1,17 @@
-package com.lyh.security.config;
+package com.lyh.security.browser.config;
 
 import com.lyh.security.core.authentication.AbstractChannelSecurityConfig;
 import com.lyh.security.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
+import com.lyh.security.core.properties.SecurityProperties;
+import com.lyh.security.core.validate.ValidateCodeSecurityConfig;
 import com.lyh.security.core.constant.SecurityConstants;
 
-import com.lyh.security.core.validate.ValidateCodeSecurityConfig;
-import com.lyh.security.core.properties.SecurityProperties;
-
-import com.lyh.security.session.LyhExpiredSessionStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;

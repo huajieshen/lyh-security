@@ -19,31 +19,31 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//  @Autowired
-//  private UserDetailsService customUserDetailsService;
-//
-//  @Autowired
-//  private PasswordEncoder passwordEncoder;
-//
-//  @Override
-//  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//    auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder);
-//  }
+  @Autowired
+  private UserDetailsService customUserDetailsService;
 
-//  @Override
-//  protected void configure(HttpSecurity http) throws Exception {
-//    //security5+ 认证默认为表单了也就是http.formLogin()
-//    http.httpBasic();
-//  }
+  @Autowired
+  private PasswordEncoder passwordEncoder;
+
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder);
+  }
+
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    //security5+ 认证默认为表单了也就是http.formLogin()
+    http.httpBasic();
+  }
 
   /**
    * 真正将AuthenticationManager注入到spring容器
    * @return
    * @throws Exception
    */
-//  @Bean
-//  @Override
-//  public AuthenticationManager authenticationManagerBean() throws Exception {
-//    return super.authenticationManagerBean();
-//  }
+  @Bean
+  @Override
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
 }
