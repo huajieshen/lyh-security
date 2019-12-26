@@ -4,14 +4,20 @@ package com.lyh.controller;
 import com.lyh.dto.User;
 import com.lyh.dto.UserQueryCondition;
 import com.lyh.exception.UserNotExistException;
+import com.lyh.security.app.social.AppSignUpUtils;
+import com.lyh.security.core.properties.SecurityProperties;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +29,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,12 +45,19 @@ public class UserController {
   @Autowired
   private ProviderSignInUtils providerSignInUtils;
 
+  @Autowired
+  private AppSignUpUtils appSignUpUtils;
+
+  @Autowired
+  private SecurityProperties securityProperties;
+
   @PostMapping("/regist")
   public void regist(User user, HttpServletRequest request) {
 
     //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
     String userId = user.getUsername();
-    providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+//    providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
+    appSignUpUtils.doPostSignUp(new ServletWebRequest(request), userId);
   }
 
 
@@ -53,6 +67,27 @@ public class UserController {
 //  }
   public Object getCurrentUser(@AuthenticationPrincipal UserDetails user){
     return SecurityContextHolder.getContext().getAuthentication();
+  }
+
+  @GetMapping("/me2")
+  public Object getCurrentUser2(Authentication authentication, HttpServletRequest request) throws UnsupportedEncodingException {
+    //方式2---方式1的简写版
+    //从请求头中获取到JWT
+//    String token = StringUtils.substringAfter(request.getHeader("Authorization"), "bearer ");
+
+    String header = request.getHeader("Authorization");
+    String token = StringUtils.substringAfter(header, "bearer ");
+
+    //对JWT进行解析,注意由于JWT生成时编码格式用的UTF-8（看源码可以追踪到）
+    //但Jwts工具用到的默认编码格式不是，所以要设置其编码格式为UTF-8
+    Claims claims = Jwts.parser()
+            .setSigningKey(securityProperties.getOauth2().getJwtSigningKey().getBytes("UTF-8"))
+            .parseClaimsJws(token).getBody();
+    //取出扩展信息，并打印
+    String company = (String) claims.get("company");
+
+    System.err.println("----->" + company);
+    return authentication;
   }
 
 

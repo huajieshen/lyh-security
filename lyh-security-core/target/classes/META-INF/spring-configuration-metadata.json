@@ -18,6 +18,11 @@
       "sourceType": "com.lyh.security.core.properties.SecurityProperties"
     },
     {
+      "name": "lyh.security.oauth2",
+      "type": "com.lyh.security.core.properties.OAuth2Properties",
+      "sourceType": "com.lyh.security.core.properties.SecurityProperties"
+    },
+    {
       "name": "lyh.security.social",
       "type": "com.lyh.security.core.properties.SocialProperties",
       "sourceType": "com.lyh.security.core.properties.SecurityProperties"

@@ -1,5 +1,6 @@
 package com.lyh.security.core.validate;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
  * @version 1.0
  * @date 2019/12/5 20:29
  */
-public class ValidateCode {
+public class ValidateCode implements Serializable {
 
   //    验证码
   private String code;

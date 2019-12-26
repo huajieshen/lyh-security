@@ -14,6 +14,9 @@ public class LyhSpringSocialConfigurer extends SpringSocialConfigurer {
 
   private String filterProcessesUrl;
 
+  //注入成功处理器处理器 -- 为null时走spring-security默认的，否则走传递过来的，这里也就是指可以发送token的
+  private SocialAuthenticationFilterPostProcessor socialAuthenticationFilterPostProcessor;
+
   public LyhSpringSocialConfigurer(String filterProcessesUrl){
      this.filterProcessesUrl = filterProcessesUrl;
   }
@@ -23,6 +26,26 @@ public class LyhSpringSocialConfigurer extends SpringSocialConfigurer {
     //在父类处理完SocialAuthenticationFilter之后的基础上，将其默认拦截url改成我们配置的值
     SocialAuthenticationFilter filter = (SocialAuthenticationFilter) super.postProcess(object);
     filter.setFilterProcessesUrl(filterProcessesUrl);
+    if(socialAuthenticationFilterPostProcessor != null){
+      socialAuthenticationFilterPostProcessor.process(filter);
+    }
+
     return (T) filter;
+  }
+
+  public String getFilterProcessesUrl() {
+    return filterProcessesUrl;
+  }
+
+  public void setFilterProcessesUrl(String filterProcessesUrl) {
+    this.filterProcessesUrl = filterProcessesUrl;
+  }
+
+  public SocialAuthenticationFilterPostProcessor getSocialAuthenticationFilterPostProcessor() {
+    return socialAuthenticationFilterPostProcessor;
+  }
+
+  public void setSocialAuthenticationFilterPostProcessor(SocialAuthenticationFilterPostProcessor socialAuthenticationFilterPostProcessor) {
+    this.socialAuthenticationFilterPostProcessor = socialAuthenticationFilterPostProcessor;
   }
 }

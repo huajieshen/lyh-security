@@ -2,7 +2,7 @@ package com.lyh.security.browser.controller;
 
 import com.lyh.security.core.properties.SecurityProperties;
 import com.lyh.security.core.support.SimpleResponse;
-import com.lyh.security.browser.support.SocialUserInfo;
+import com.lyh.security.core.pojo.SocialUserInfo;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

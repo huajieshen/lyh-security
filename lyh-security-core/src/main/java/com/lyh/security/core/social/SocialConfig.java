@@ -38,6 +38,9 @@ public class SocialConfig extends SocialConfigurerAdapter {
   @Autowired(required = false)
   private ConnectionSignUp connectionSignUp;
 
+  @Autowired(required = false)
+  private SocialAuthenticationFilterPostProcessor socialAuthenticationFilterPostProcessor;
+
   /**
    * 第二个参数的作用：根据条件查找该用哪个ConnectionFactory来构建Connection对象
    * 第三个参数的作用: 对插入到userconnection表中的数据进行加密和解密
@@ -66,6 +69,7 @@ public class SocialConfig extends SocialConfigurerAdapter {
     String filterProcessesUrl = securityProperties.getSocial().getFilterProcessesUrl();
     LyhSpringSocialConfigurer configurer = new LyhSpringSocialConfigurer(filterProcessesUrl);
     configurer.signupUrl(securityProperties.getBrowserProperties().getSignUpUrl());
+    configurer.setSocialAuthenticationFilterPostProcessor(socialAuthenticationFilterPostProcessor);
     return configurer;
   }
 

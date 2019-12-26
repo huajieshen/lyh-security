@@ -1,4 +1,4 @@
-package com.lyh.security.browser.support;
+package com.lyh.security.core.pojo;
 
 /**
  * @author shenhj
@@ -7,13 +7,18 @@ package com.lyh.security.browser.support;
  * @date 2019/12/11 17:06
  */
 public class SocialUserInfo {
+
+  /**提供商唯一标识*/
   private String providerId;
 
+  /***用户在提供商的唯一标识（其实就是openId）*/
   private String providerUserId;
 
-  private String nickname;
+  /**用户在提供商的昵称*/
+  private String nickName;
 
-  private String headimg;
+  /**用户在提供商的头像*/
+  private String headImg;
 
   public String getProviderId() {
     return providerId;
@@ -31,19 +36,19 @@ public class SocialUserInfo {
     this.providerUserId = providerUserId;
   }
 
-  public String getNickname() {
-    return nickname;
+  public String getNickName() {
+    return nickName;
   }
 
-  public void setNickname(String nickname) {
-    this.nickname = nickname;
+  public void setNickName(String nickName) {
+    this.nickName = nickName;
   }
 
-  public String getHeadimg() {
-    return headimg;
+  public String getHeadImg() {
+    return headImg;
   }
 
-  public void setHeadimg(String headimg) {
-    this.headimg = headimg;
+  public void setHeadImg(String headImg) {
+    this.headImg = headImg;
   }
 }

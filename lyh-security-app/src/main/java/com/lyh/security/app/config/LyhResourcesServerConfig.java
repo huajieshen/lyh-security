@@ -61,16 +61,16 @@ public class LyhResourcesServerConfig extends ResourceServerConfigurerAdapter {
             .failureHandler(customAuthenticationFailureHandler);
 
 
-    http//.apply(validateCodeSecurityConfig)
-          //  .and()
+    http.apply(validateCodeSecurityConfig)
+            .and()
             //短信校验相关配置
             .apply(smsCodeAuthenticationSecurityConfig)
             .and()
             //springsocial校验相关配置
             .apply(lyhSocialSecurityConfig)
             .and()
-//            .apply(openIdAuthenticationSecurityConfig)
-//            .and()
+            .apply(openIdAuthenticationSecurityConfig)
+            .and()
             .authorizeRequests()//下边的都是授权的配置
             .antMatchers(
                     SecurityConstants.DEFAULT_UNAUTHENTICATION_URL,  //  "/authentication/require",
@@ -87,7 +87,7 @@ public class LyhResourcesServerConfig extends ResourceServerConfigurerAdapter {
 //                    securityProperties.getBrowserProperties().getLoginPage(),
 //                    "/code/*",
                     "/error",
-                    "/user/regist", "/session/invalid")
+                    "/user/regist", "/session/invalid", "/social/signUp")
             .permitAll()
             .anyRequest()
             .authenticated() //
